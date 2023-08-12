@@ -1,12 +1,32 @@
 import { useState } from 'react';
+import { Routes, Route, useLocation, useNavigate} from 'react-router-dom';
 import './App.css';
 import Cards from './components/Cards/Cards.jsx';
 import Nav from './components/Nav/Nav';
+import About from './components/About/About';
+import Detail from './components/Detail/Detail';
+import Form from './components/Form/Form';
 
 
 function App () {
-
   let [characters, setCharacters] = useState([]);
+  let [access, setAccess] = useState(false);
+  const navigate = useNavigate();
+
+  let userName = 'cuentasdechalo@gmail.com';
+  let userPassword = 'Alalalon2';
+
+  function login(userData) {
+    if (userData.password === userPassword && userData.username === userName) {
+       setAccess(true);
+       navigate('/home');
+    }
+    else{
+      alert('Aca no eh')
+    }
+  }
+
+  const location = useLocation();
 
   const onSearch = (value) =>{
 
@@ -29,14 +49,29 @@ function App () {
   return (
     <div className='App' style={myStyle}>
       <div>
-        <Nav onSearch={onSearch} />
+      { location.pathname !== "/" ? <Nav onSearch={onSearch} /> : undefined}
+        {/* <Nav onSearch={onSearch} /> */}
       </div>
       <hr />
+      <Routes>
+        {/* RUTA LOGIN */}
+        <Route path='/' element={<Form login={login}/>} />
+
+        {/* RUTA HOME */}
+        <Route path='/home' element={
+          <Cards
+            characters={characters}
+            onClose={handleOnClose}
+          />
+        }/>
+        {/* RUTA ABOUT */}
+        <Route path='/about' element={<About/>} />
+
+        {/* RUTA DETAIL */}
+        <Route path='/detail/:detailId' element={<Detail />} />
+
+      </Routes>
       <div>
-        <Cards
-          characters={characters}
-          onClose={handleOnClose}
-        />
       </div>
     </div>
   )
