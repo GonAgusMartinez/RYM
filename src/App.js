@@ -6,15 +6,18 @@ import Nav from './components/Nav/Nav';
 import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
+import Favorites from './components/Favorites/Favorites';
+
 
 
 function App () {
+
   let [characters, setCharacters] = useState([]);
   let [access, setAccess] = useState(false);
   const navigate = useNavigate();
 
   let userName = 'cuentasdechalo@gmail.com';
-  let userPassword = 'Alalalon2';
+  let userPassword = 'Alalon2';
 
   function login(userData) {
     if (userData.password === userPassword && userData.username === userName) {
@@ -22,7 +25,7 @@ function App () {
        navigate('/home');
     }
     else{
-      alert('Aca no eh')
+      alert('A donde vas?')
     }
   }
 
@@ -70,6 +73,10 @@ function App () {
         {/* RUTA DETAIL */}
         <Route path='/detail/:detailId' element={<Detail />} />
 
+        {/* RUTA DETAIL */}
+        <Route path='/favorites' element={<Favorites />}/>
+
+
       </Routes>
       <div>
       </div>
@@ -78,3 +85,4 @@ function App () {
 }
 
 export default App
+

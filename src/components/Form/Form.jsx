@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import validation from './Validation';
+import validation from './validation';
 import Styles from './Form.module.css';
 
 let {myError} = Styles;
@@ -35,11 +35,11 @@ const Form = ({ login })=>{
     return(
         <div>
             <form onSubmit={handleSubmit}>
-            <img src="https://www.peakpx.com/en/hd-wallpaper-desktop-nyvhl"></img>
+                <img src="https://m.media-amazon.com/images/I/81dH1faXr7L._AC_SL1500_.jpg"></img>
                 <label htmlFor="email">Email</label>
                 <input 
                     type="text" 
-                    placeholder="Tu Gmail" 
+                    placeholder="Tu gmail" 
                     name="username" 
                     value={userData.username} 
                     onChange={handleImputChange}
@@ -49,7 +49,7 @@ const Form = ({ login })=>{
                 <label htmlFor="password">Password</label>
                 <input 
                     type="text" 
-                    placeholder="Contraseña Secreta" 
+                    placeholder="Contraseña secreta" 
                     name="password" 
                     value={userData.password} 
                     onChange={handleImputChange}
@@ -59,7 +59,7 @@ const Form = ({ login })=>{
                 <button>Submit</button>
                 <button onClick={(e)=>{
                     e.preventDefault();
-                    alert('Enhorabuena iniciaste sesion')
+                    alert('Bienvenidos!!!')
                 }} >Register</button>
             </form>
         </div>

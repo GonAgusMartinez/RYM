@@ -16,6 +16,7 @@ export default function Cards({characters, onClose}) {
             gender={gender}
             image={image}
             onClose={onClose}
+            origin={false}
          />)
       }
    </div>;
